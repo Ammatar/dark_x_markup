@@ -1,0 +1,426 @@
+// Colors Var's
+$primary_color: #ce4da4;
+$secondary_color: #7353e5;
+$elements_bg_color: #696969;
+$bg_color: #13111a;
+$elements_linear_gradient: linear-gradient(
+  90deg,
+  #ce4da4 0%,
+  #7353e5 52.08%,
+  #7353e5 100%
+);
+$elements_radial_gradient: radial-gradient($bg_color, #7353e5 52.08%);
+// Breakpoints Var's
+$first_min_width: 500px;
+$second_min_width: 700px;
+$third_min_width: 900px;
+$fourth_min_width: 1200px;
+// MIXIN's
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin bgBlur($bg: $elements_radial_gradient, $radius: 15rem) {
+  content: ' ';
+  width: 25%;
+  height: 50%;
+  position: absolute;
+  z-index: -1;
+  border: white 1px solid;
+  border-radius: 50%;
+  background: $bg;
+  filter: blur($radius);
+}
+// END OF VARS
+body {
+  background-color: $bg_color;
+  color: white;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+button {
+  color: white;
+}
+.App {
+  margin: 0 10px;
+  @media screen and (min-width: $fourth_min_width) {
+    width: $fourth_min_width;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: $third_min_width) {
+    width: $third_min_width;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: $second_min_width) {
+    width: $second_min_width;
+    margin: 0 auto;
+  }
+}
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo {
+  width: 100%;
+  @include flexCenter();
+  & div {
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    background-image: $elements_radial_gradient;
+    border-radius: 50%;
+  }
+}
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  &__menu-item {
+    text-decoration: none;
+    color: white;
+  }
+  &__block {
+    width: 100%;
+    @media screen and (min-width: $fourth_min_width) {
+      display: flex;
+    }
+  }
+}
+.login_menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 15px;
+  @media screen and (min-width: $fourth_min_width) {
+    margin-top: unset;
+  }
+  &__menu-item {
+    text-decoration: none;
+  }
+}
+.button {
+  $border: 5px; // Var
+  margin: 5px 0;
+  border: $border solid transparent;
+  position: relative;
+  border-radius: 50px;
+  background-color: $bg_color;
+  cursor: pointer;
+  @include flexCenter();
+
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    border-radius: 50px;
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: linear-gradient(
+      90deg,
+      #7353e5 0%,
+      #ce4da4 52.08%,
+      #ce4da4 100%
+    );
+  }
+  &:hover {
+    width: 110%;
+  }
+}
+.buttons_line {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 15px 0;
+}
+.content-title {
+  & h1 {
+    text-align: center;
+  }
+  & h2 {
+    text-align: center;
+    background: $elements_linear_gradient;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.content_img {
+  width: 100%;
+  margin: 0 auto;
+  @include flexCenter();
+  @media screen and (min-width: $fourth_min_width) {
+    &::before {
+      margin-left: 10%;
+      @include bgBlur($bg: $elements_radial_gradient, $radius: 20rem);
+    }
+  }
+  .main {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .small {
+    position: absolute;
+    width: 30%;
+  }
+  .small.left {
+    left: 0;
+    @media screen and (min-width: $third_min_width) {
+      left: calc(50% - 450px);
+    }
+    @media screen and (min-width: $fourth_min_width) {
+      left: calc(50% - 600px);
+    }
+  }
+  .small.right {
+    right: 0;
+    @media screen and (min-width: $third_min_width) {
+      right: calc(50% - 450px);
+    }
+    @media screen and (min-width: $fourth_min_width) {
+      right: calc(50% - 600px);
+    }
+  }
+  .benefits_img {
+    width: 200px;
+  }
+}
+.tiles_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: $second_min_width) {
+    margin: 30px 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  @media screen and (min-width: $third_min_width) {
+    margin: 30px 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  @media screen and (min-width: $fourth_min_width) {
+    margin: 30px 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  flex-wrap: wrap;
+  &__item {
+    margin: 5px 0;
+    @media screen and (min-width: $second_min_width) {
+      width: 30%;
+    }
+    @media screen and (min-width: $third_min_width) {
+      width: 30%;
+    }
+    @media screen and (min-width: $fourth_min_width) {
+      width: 30%;
+    }
+  }
+  &__img-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 25px;
+    background-color: $elements_bg_color;
+    @include flexCenter();
+  }
+}
+.benefits__container {
+  margin: 10px;
+  &-block {
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: $third_min_width) {
+      flex-direction: row;
+    }
+    @media screen and (min-width: $fourth_min_width) {
+      flex-direction: row;
+    }
+  }
+  & .reverse {
+    @media screen and (min-width: $first_min_width) {
+      flex-direction: column-reverse;
+    }
+    @media screen and (min-width: $third_min_width) {
+      flex-direction: row-reverse;
+    }
+    @media screen and (min-width: $fourth_min_width) {
+      flex-direction: row-reverse;
+    }
+  }
+  & .benefits_img {
+    width: 200px;
+    height: 200px;
+  }
+}
+.benefits_text {
+  width: 100%;
+  &__text-block {
+    display: flex;
+    justify-content: space-evenly;
+    @media screen and (min-width: $fourth_min_width) {
+      &::before {
+        margin-left: 10%;
+        @include bgBlur($bg: $elements_linear_gradient, $radius: 20rem);
+      }
+    }
+  }
+  &__text-block div {
+    margin-left: 15px;
+  }
+}
+.getStarted {
+  &__button-block {
+    border: 1px solid white;
+    box-shadow: 0px 0px 5px 5px $secondary_color;
+    margin: 15px 0;
+    @media screen and (min-width: $fourth_min_width) {
+      width: 500px;
+      margin: 15px auto;
+    }
+    & div {
+      text-align: center;
+    }
+    & .buttons {
+      @include flexCenter();
+      justify-content: space-evenly;
+    }
+  }
+  &__text-block {
+    @media screen and (min-width: $fourth_min_width) {
+      display: flex;
+      margin-top: 40px;
+      .item {
+        width: 70%;
+        margin: 0 20px;
+      }
+      .item::before {
+        margin-top: 10%;
+        margin-left: 10%;
+        @include bgBlur();
+      }
+    }
+  }
+  &__text-block-block {
+    @media screen and (min-width: $third_min_width) {
+      display: flex;
+      margin-top: 40px;
+      width: 100%;
+      margin: 0 20px;
+    }
+  }
+  &__card {
+  }
+  &__card-number {
+    width: 60px;
+    height: 60px;
+    background-color: $elements_bg_color;
+    border-radius: 15px;
+    @include flexCenter();
+  }
+}
+.review__title {
+  @media screen and (min-width: $fourth_min_width) {
+    text-align: center;
+  }
+}
+.review__container {
+  // display: flex;
+  @include flexCenter();
+  &-arrow {
+    @include flexCenter();
+  }
+  &-arrow img {
+    width: 30px;
+  }
+  @media screen and (min-width: $fourth_min_width) {
+    justify-content: center;
+  }
+}
+.review__card {
+  display: flex;
+  img {
+    width: 100px;
+    height: 100px;
+    align-self: center;
+  }
+  div {
+    @media screen and (min-width: $first_min_width) {
+      width: 350px;
+      margin: 10px;
+    }
+    @media screen and (min-width: $second_min_width) {
+      width: 400px;
+      margin: 10px;
+    }
+    @media screen and (min-width: $third_min_width) {
+      width: 400px;
+      margin: 10px;
+    }
+    @media screen and (min-width: $fourth_min_width) {
+      width: 600px;
+      margin: 10px;
+    }
+  }
+  h3 {
+    @media screen and (min-width: $fourth_min_width) {
+      margin-left: 10px;
+    }
+  }
+}
+@mixin footer_links() {
+  color: white;
+}
+.footer__container {
+  @media screen and (min-width: $fourth_min_width) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  a {
+    @include footer_links();
+  }
+  &-menu {
+    display: flex;
+    flex-direction: column;
+  }
+  &-menu h4 {
+    background-color: $elements_bg_color;
+    @media screen and (min-width: $fourth_min_width) {
+      background-color: unset;
+    }
+  }
+  &-menu h4::after {
+    content: '';
+  }
+  &-menu-disabled {
+    display: none;
+    @media screen and (min-width: $fourth_min_width) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &-menu-active {
+    display: flex;
+    flex-direction: column;
+  }
+  &-subscribe {
+    margin: 20px 0;
+    @media screen and (min-width: $fourth_min_width) {
+      width: 50%;
+    }
+  }
+}
+.footer__form {
+  width: 100%;
+  text-align: center;
+  @include flexCenter();
+  justify-content: center;
+  & input {
+    margin-right: 30px;
+  }
+}
